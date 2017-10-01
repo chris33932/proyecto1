@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tiendas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Slug</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Salt</th>
+                <th>Descripcion</th>
+                <th>Direccion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tienda in tiendas %}
+            <tr>
+                <td><a href="{{ path('tienda_show', { 'id': tienda.id }) }}">{{ tienda.id }}</a></td>
+                <td>{{ tienda.nombre }}</td>
+                <td>{{ tienda.slug }}</td>
+                <td>{{ tienda.login }}</td>
+                <td>{{ tienda.password }}</td>
+                <td>{{ tienda.salt }}</td>
+                <td>{{ tienda.descripcion }}</td>
+                <td>{{ tienda.direccion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tienda_show', { 'id': tienda.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tienda_edit', { 'id': tienda.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tienda_new') }}">Create a new tienda</a>
+        </li>
+    </ul>
+{% endblock %}

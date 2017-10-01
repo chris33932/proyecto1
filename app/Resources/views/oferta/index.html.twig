@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ofertas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Slug</th>
+                <th>Descripcion</th>
+                <th>Condiciones</th>
+                <th>Foto</th>
+                <th>Precio</th>
+                <th>Descuento</th>
+                <th>Fechapublicacion</th>
+                <th>Fechaexpiracion</th>
+                <th>Compras</th>
+                <th>Umbral</th>
+                <th>Revisada</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ofertum in ofertas %}
+            <tr>
+                <td><a href="{{ path('oferta_show', { 'id': ofertum.id }) }}">{{ ofertum.id }}</a></td>
+                <td>{{ ofertum.nombre }}</td>
+                <td>{{ ofertum.slug }}</td>
+                <td>{{ ofertum.descripcion }}</td>
+                <td>{{ ofertum.condiciones }}</td>
+                <td>{{ ofertum.foto }}</td>
+                <td>{{ ofertum.precio }}</td>
+                <td>{{ ofertum.descuento }}</td>
+                <td>{% if ofertum.fechaPublicacion %}{{ ofertum.fechaPublicacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if ofertum.fechaExpiracion %}{{ ofertum.fechaExpiracion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ ofertum.compras }}</td>
+                <td>{{ ofertum.umbral }}</td>
+                <td>{% if ofertum.revisada %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('oferta_show', { 'id': ofertum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('oferta_edit', { 'id': ofertum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('oferta_new') }}">Create a new ofertum</a>
+        </li>
+    </ul>
+{% endblock %}

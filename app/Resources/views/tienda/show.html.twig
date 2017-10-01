@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tienda</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tienda.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ tienda.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ tienda.slug }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ tienda.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ tienda.password }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ tienda.salt }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ tienda.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ tienda.direccion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tienda_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tienda_edit', { 'id': tienda.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
